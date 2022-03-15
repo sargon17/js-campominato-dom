@@ -120,15 +120,7 @@ function gameCampoMinato(target) {
   }
 }
 
-function updateScoreDisplayer() {
-  playerScorePercentageDisplay.innerHTML = `${Math.floor(
-    winningPercentage
-  )}%<span>(${playerCounter} cards)</span>`;
-  playerHardRecordPercentageDisplay.innerHTML = `${playerRecordHardPercentage}%<span>(${playerRecordHard} cards)</span>`;
-  playerNormalRecordPercentageDisplay.innerHTML = `${playerRecordNormalPercentage}%<span>(${playerRecordNormal} cards)</span>`;
-  playerEasyRecordPercentageDisplay.innerHTML = `${playerRecordEasyPercentage}%<span>(${playerRecordEasy} cards)</span>`;
-}
-
+// --------------- Function that check if the player has won & display the win Section
 function winChecker() {
   if (winningPercentage > 50) {
     gameOverText.className = "gameOverText--win";
@@ -139,26 +131,7 @@ function winChecker() {
   }
 }
 
-function scoreChecker() {
-  switch (level) {
-    case 1:
-      if (playerCounter > playerRecordEasy) {
-        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
-      }
-      break;
-    case 2:
-      if (playerCounter > playerRecordNormal) {
-        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
-      }
-      break;
-    case 3:
-      if (playerCounter > playerRecordHard) {
-        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
-      }
-      break;
-  }
-}
-
+// --------------- Function that overwrite the previus record with the new one by level
 function scoresRecord(level) {
   switch (level) {
     case 1:
@@ -183,6 +156,36 @@ function scoresRecord(level) {
   updateScoreDisplayer();
 }
 
+// --------------- Function that update the score on display
+function updateScoreDisplayer() {
+  playerScorePercentageDisplay.innerHTML = `${Math.floor(
+    winningPercentage
+  )}%<span>(${playerCounter} cards)</span>`;
+  playerHardRecordPercentageDisplay.innerHTML = `${playerRecordHardPercentage}%<span>(${playerRecordHard} cards)</span>`;
+  playerNormalRecordPercentageDisplay.innerHTML = `${playerRecordNormalPercentage}%<span>(${playerRecordNormal} cards)</span>`;
+  playerEasyRecordPercentageDisplay.innerHTML = `${playerRecordEasyPercentage}%<span>(${playerRecordEasy} cards)</span>`;
+}
+
+// ---------------- Function that chenge the counter color when the player beat the previus record by level
+function scoreChecker() {
+  switch (level) {
+    case 1:
+      if (playerCounter > playerRecordEasy) {
+        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
+      }
+      break;
+    case 2:
+      if (playerCounter > playerRecordNormal) {
+        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
+      }
+      break;
+    case 3:
+      if (playerCounter > playerRecordHard) {
+        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
+      }
+      break;
+  }
+}
 // -------------------------------- / FUNCTIONS ------------------------------------
 
 // -------------------------------- ON LOAD FUNCTIONS ------------------------------------
