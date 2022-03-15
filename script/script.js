@@ -52,4 +52,5 @@ gameOverRetryBtn.addEventListener("click", () => {
 choseLevelBtn.addEventListener("click", () => {
   let level = choseLevel.value;
   console.log(level);
+  if(level === 1)
 });
