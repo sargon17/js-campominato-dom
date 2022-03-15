@@ -1,6 +1,8 @@
 const gameBoard = document.querySelector("#mt__game-box");
 const gameOverWindow = document.querySelector("#gameOverWindow");
+const gameOverText = document.querySelector("#gameOverText");
 const gameOverRetryBtn = document.querySelector("#gameOverRetryBtn");
+const keepPlayingBtn = document.querySelector("#keepPlayingBtn");
 const choseLevel = document.querySelector("#choseLevel");
 const choseLevelBtn = document.querySelector("#choseLevelBtn");
 const playerScorePercentageDisplay = document.querySelector(
@@ -38,6 +40,16 @@ function updateScoreDisplayer() {
   playerEasyRecordPercentageDisplay.innerHTML = `${playerRecordEasyPercentage}%<span>(${playerRecordEasy} cards)</span>`;
 }
 
+function winChecker() {
+  if (winningPercentage > 50) {
+    gameOverText.className = "gameOverText--win";
+    gameOverText.innerHTML = "Hai Vinto";
+    gameOverRetryBtn.classList.add("d-none");
+    keepPlayingBtn.classList.remove("d-none");
+    gameOverWindow.classList.remove("d-none");
+  }
+}
+
 function scoreChecker() {
   switch (level) {
     case 1:
@@ -54,10 +66,6 @@ function scoreChecker() {
       if (playerCounter > playerRecordHard) {
         playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
       }
-      break;
-    default:
-      playerScorePercentageDisplay.classList.remove("sidebar__percentage-over");
-
       break;
   }
 }
@@ -91,7 +99,10 @@ function gameCampoMinato(target) {
   if (bombs.includes(id)) {
     target.target.classList.add("mt__bomb");
     scoresRecord(level);
+    gameOverText.innerHTML = "Hai Perso";
+    gameOverText.classList.remove("gameOverText--win");
     gameOverWindow.classList.remove("d-none");
+    playerScorePercentageDisplay.classList.remove("sidebar__percentage-over");
   } else {
     playerCounter++;
     scoreChecker();
@@ -99,6 +110,7 @@ function gameCampoMinato(target) {
     console.log(winningPercentage);
     target.target.classList.add("mt__safe");
     updateScoreDisplayer();
+    winChecker();
   }
 }
 
@@ -159,6 +171,9 @@ levelChoice();
 
 gameOverRetryBtn.addEventListener("click", () => {
   levelChoice();
+  gameOverWindow.classList.add("d-none");
+});
+keepPlayingBtn.addEventListener("click", () => {
   gameOverWindow.classList.add("d-none");
 });
 

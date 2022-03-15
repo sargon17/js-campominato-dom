@@ -150,11 +150,14 @@ body {
   justify-content: center;
   text-align: center;
 }
-.game-over-card h2 {
+.game-over-text {
   font-size: var(--mt-fs-large);
   font-weight: 700;
   font-family: var(--mt-ff-montserrat);
   color: var(--mt-red);
+}
+.game-over-text--win {
+  color: var(--mt-dark-green);
 }
 
 .left-sidebar {
