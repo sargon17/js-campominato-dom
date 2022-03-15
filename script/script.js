@@ -19,8 +19,29 @@ function gameCampoMinato(target) {
   }
 }
 
+function levelChoice() {
+  let level = parseInt(choseLevel.value);
+  switch (level) {
+    case 1:
+      startGame(100);
+      break;
+    case 2:
+      startGame(81);
+      break;
+    case 3:
+      startGame(49);
+      break;
+
+    default:
+      startGame(100);
+
+      break;
+  }
+}
+
 function startGame(cardNumber) {
   gameBoard.innerHTML = "";
+  bombs = [];
   for (let index = 0; index < 10; index++) {
     bomb = Math.floor(Math.random() * cardNumber + 1);
     bombs.push(bomb);
@@ -45,12 +66,8 @@ function startGame(cardNumber) {
 }
 
 gameOverRetryBtn.addEventListener("click", () => {
-  startGame();
+  levelChoice();
   gameOverWindow.classList.add("d-none");
 });
 
-choseLevelBtn.addEventListener("click", () => {
-  let level = choseLevel.value;
-  console.log(level);
-  if(level === 1)
-});
+choseLevelBtn.addEventListener("click", levelChoice);
