@@ -1,0 +1,31 @@
+:root {
+  --mt-black: #161616;
+  --mt-blue: #7798ab;
+  --mt-green: #c3dbc5;
+  --mt-red: #e35d6a;
+  --mt-clear-gray: #afafaf;
+  --mt-gray: #5b5b5b;
+  --mt-dark-gray: #2d2d2d;
+}
+
+.mt__bg--black {
+  background: var(--mt-black);
+}
+.mt__bg--blue {
+  background: var(--mt-blue);
+}
+.mt__bg--green {
+  background: var(--mt-green);
+}
+.mt__bg--red {
+  background: var(--mt-red);
+}
+.mt__bg--clear-gray {
+  background: var(--mt-clear-gray);
+}
+.mt__bg--gray {
+  background: var(--mt-gray);
+}
+.mt__bg--dark-gray {
+  background: var(--mt-dark-gray);
+}
