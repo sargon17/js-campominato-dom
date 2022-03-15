@@ -3,6 +3,18 @@ const gameOverWindow = document.querySelector("#gameOverWindow");
 const gameOverRetryBtn = document.querySelector("#gameOverRetryBtn");
 const choseLevel = document.querySelector("#choseLevel");
 const choseLevelBtn = document.querySelector("#choseLevelBtn");
+const playerScorePercentageDisplay = document.querySelector(
+  "#playerScorePercentageDisplay"
+);
+const playerHardRecordPercentageDisplay = document.querySelector(
+  "#playerHardRecordPercentageDisplay"
+);
+const playerNormalRecordPercentageDisplay = document.querySelector(
+  "#playerHardRecordPercentageDisplay"
+);
+const playerEasyRecordPercentageDisplay = document.querySelector(
+  "#playerHardRecordPercentageDisplay"
+);
 
 let bombs = [];
 let level = 1;

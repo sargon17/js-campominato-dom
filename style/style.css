@@ -8,6 +8,7 @@
   --mt-gray: #5b5b5b;
   --mt-dark-gray: #2d2d2d;
 
+  --mt-fs-small: 1.618rem;
   --mt-fs-medium: 2.618rem;
   --mt-fs-large: 4.236rem;
   --mt-fs-xlarge: 6.854rem;
@@ -154,4 +155,31 @@ body {
   font-weight: 700;
   font-family: var(--mt-ff-montserrat);
   color: var(--mt-red);
+}
+
+.left-sidebar {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+.sidebar__percentage {
+  font-family: var(--mt-ff-montserrat);
+  font-size: var(--mt-fs-large);
+  line-height: 0.8em;
+  margin: 0;
+}
+.sidebar__percentage span {
+  font-family: var(--mt-ff-lora);
+  font-size: var(--mt-fs-small);
+  color: var(--mt-gray);
+}
+.sidebar__percentage-over {
+  color: var(--mt-dark-green);
+}
+.sidebar__percentage-under {
+  color: var(--mt-red);
+}
+.sidebar__tag {
+  margin: 0;
 }
