@@ -5,22 +5,58 @@ const choseLevel = document.querySelector("#choseLevel");
 const choseLevelBtn = document.querySelector("#choseLevelBtn");
 
 let bombs = [];
-let isGameOver = false;
+let level = 1;
+let playerCounter = 0;
+let playerRecordHard = 0;
+let playerRecordHardPercentage = 0;
+let playerRecordNormal = 0;
+let playerRecordNormalPercentage = 0;
+let playerRecordEasy = 0;
+let playerRecordEasyPercentage = 0;
+let winningRatio = 0;
+let winningPercentage = 0;
+
 startGame(100);
+
+function scoresRecord(level) {
+  switch (level) {
+    case 1:
+      if (playerCounter > playerRecordEasy) {
+        playerRecordEasy = playerCounter;
+        playerRecordEasyPercentage = winningPercentage;
+      }
+      break;
+    case 2:
+      if (playerCounter > playerRecordNormal) {
+        playerRecordNormal = playerCounter;
+        playerRecordNormalPercentage = winningPercentage;
+      }
+      break;
+    case 3:
+      if (playerCounter > playerRecordHard) {
+        playerRecordHard = playerCounter;
+        playerRecordHardPercentage = winningPercentage;
+      }
+      break;
+  }
+}
 
 function gameCampoMinato(target) {
   let id = parseInt(target.target.id);
   if (bombs.includes(id)) {
     target.target.classList.add("mt__bomb");
-    isGameOver = true;
+    scoresRecord(level);
     gameOverWindow.classList.remove("d-none");
   } else {
+    playerCounter++;
+    winningPercentage = playerCounter * winningRatio;
+    console.log(winningPercentage);
     target.target.classList.add("mt__safe");
   }
 }
 
 function levelChoice() {
-  let level = parseInt(choseLevel.value);
+  level = parseInt(choseLevel.value);
   switch (level) {
     case 1:
       startGame(100);
@@ -40,12 +76,16 @@ function levelChoice() {
 }
 
 function startGame(cardNumber) {
+  playerCounter = 0;
+  winningPercentage = 0;
+
   gameBoard.innerHTML = "";
   bombs = [];
   for (let index = 0; index < 10; index++) {
     bomb = Math.floor(Math.random() * cardNumber + 1);
     bombs.push(bomb);
   }
+  winningRatio = cardNumber / (cardNumber - 10);
 
   console.log("for cheaters", bombs);
 
@@ -61,6 +101,12 @@ function startGame(cardNumber) {
       if (target.target.id) {
         gameCampoMinato(target);
       }
+      console.log(
+        playerCounter,
+        playerRecordEasy,
+        playerRecordNormal,
+        playerRecordHard
+      );
     });
   }
 }
