@@ -177,9 +177,6 @@ body {
 .sidebar__percentage-over {
   color: var(--mt-dark-green);
 }
-.sidebar__percentage-under {
-  color: var(--mt-red);
-}
 .sidebar__tag {
   margin: 0;
 }

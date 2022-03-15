@@ -15,9 +15,10 @@ const playerNormalRecordPercentageDisplay = document.querySelector(
 const playerEasyRecordPercentageDisplay = document.querySelector(
   "#playerEasyRecordPercentageDisplay"
 );
+const levelDisplay = document.querySelector("#levelDisplay");
 
 let bombs = [];
-let level = 1;
+let level = choseLevel.value;
 let playerCounter = 0;
 let playerRecordHard = 0;
 let playerRecordHardPercentage = 0;
@@ -28,8 +29,6 @@ let playerRecordEasyPercentage = 0;
 let winningRatio = 0;
 let winningPercentage = 0;
 
-startGame(100);
-
 function updateScoreDisplayer() {
   playerScorePercentageDisplay.innerHTML = `${Math.floor(
     winningPercentage
@@ -37,6 +36,30 @@ function updateScoreDisplayer() {
   playerHardRecordPercentageDisplay.innerHTML = `${playerRecordHardPercentage}%<span>(${playerRecordHard} cards)</span>`;
   playerNormalRecordPercentageDisplay.innerHTML = `${playerRecordNormalPercentage}%<span>(${playerRecordNormal} cards)</span>`;
   playerEasyRecordPercentageDisplay.innerHTML = `${playerRecordEasyPercentage}%<span>(${playerRecordEasy} cards)</span>`;
+}
+
+function scoreChecker() {
+  switch (level) {
+    case 1:
+      if (playerCounter > playerRecordEasy) {
+        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
+      }
+      break;
+    case 2:
+      if (playerCounter > playerRecordNormal) {
+        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
+      }
+      break;
+    case 3:
+      if (playerCounter > playerRecordHard) {
+        playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
+      }
+      break;
+    default:
+      playerScorePercentageDisplay.classList.remove("sidebar__percentage-over");
+
+      break;
+  }
 }
 
 function scoresRecord(level) {
@@ -71,6 +94,7 @@ function gameCampoMinato(target) {
     gameOverWindow.classList.remove("d-none");
   } else {
     playerCounter++;
+    scoreChecker();
     winningPercentage = playerCounter * winningRatio;
     console.log(winningPercentage);
     target.target.classList.add("mt__safe");
@@ -82,12 +106,15 @@ function levelChoice() {
   level = parseInt(choseLevel.value);
   switch (level) {
     case 1:
+      levelDisplay.innerHTML = "Easy";
       startGame(100);
       break;
     case 2:
+      levelDisplay.innerHTML = "Normal";
       startGame(81);
       break;
     case 3:
+      levelDisplay.innerHTML = "Hard";
       startGame(49);
       break;
 
@@ -124,15 +151,11 @@ function startGame(cardNumber) {
       if (target.target.id) {
         gameCampoMinato(target);
       }
-      console.log(
-        playerCounter,
-        playerRecordEasy,
-        playerRecordNormal,
-        playerRecordHard
-      );
     });
   }
 }
+
+levelChoice();
 
 gameOverRetryBtn.addEventListener("click", () => {
   levelChoice();
