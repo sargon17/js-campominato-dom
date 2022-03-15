@@ -8,13 +8,15 @@
   --mt-gray: #5b5b5b;
   --mt-dark-gray: #2d2d2d;
 
-  --mt-fs-medium: 1.618rem;
+  --mt-fs-medium: 2.618rem;
   --mt-fs-large: 4.236rem;
   --mt-fs-xlarge: 6.854rem;
 
   --mt-ff-montserrat: "Montserrat", sans-serif;
   --mt-ff-lora: "Lora", serif;
   --mt-ff-hind-madurai: "Hind Madurai", sans-serif;
+
+  --mt-transition: all 0.25s cubic-bezier(0.31, 0.32, 0.13, 0.93);
 }
 
 .mt__bg--black {
@@ -70,7 +72,37 @@ body {
   background: var(--mt-green);
   border: 1px solid var(--mt-dark-green);
   padding: 5px 10px;
+  transition: var(--mt-transition);
+}
+.mt__game-card:hover {
+  background: var(--mt-dark-green);
+}
+.mt__bomb {
+  background: var(--mt-red);
+}
+.mt__bomb:hover {
+  background: #bf4f5a;
+}
+.mt__safe {
+  background: var(--mt-blue);
+}
+.mt__safe:hover {
+  background: var(--mt-blue);
 }
 .mt__game-card__text {
   color: var(--mt-black);
+}
+
+.sidebar {
+  max-width: 400px;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translate(0%, -50%);
+  padding: 5px;
+}
+.sidebar__title {
+  font-family: var(--mt-ff-lora);
+  font-size: var(--mt-fs-medium);
+  margin: 20px 0;
 }
