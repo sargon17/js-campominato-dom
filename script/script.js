@@ -10,10 +10,10 @@ const playerHardRecordPercentageDisplay = document.querySelector(
   "#playerHardRecordPercentageDisplay"
 );
 const playerNormalRecordPercentageDisplay = document.querySelector(
-  "#playerHardRecordPercentageDisplay"
+  "#playerNormalRecordPercentageDisplay"
 );
 const playerEasyRecordPercentageDisplay = document.querySelector(
-  "#playerHardRecordPercentageDisplay"
+  "#playerEasyRecordPercentageDisplay"
 );
 
 let bombs = [];
@@ -30,27 +30,37 @@ let winningPercentage = 0;
 
 startGame(100);
 
+function updateScoreDisplayer() {
+  playerScorePercentageDisplay.innerHTML = `${Math.floor(
+    winningPercentage
+  )}%<span>(${playerCounter} cards)</span>`;
+  playerHardRecordPercentageDisplay.innerHTML = `${playerRecordHardPercentage}%<span>(${playerRecordHard} cards)</span>`;
+  playerNormalRecordPercentageDisplay.innerHTML = `${playerRecordNormalPercentage}%<span>(${playerRecordNormal} cards)</span>`;
+  playerEasyRecordPercentageDisplay.innerHTML = `${playerRecordEasyPercentage}%<span>(${playerRecordEasy} cards)</span>`;
+}
+
 function scoresRecord(level) {
   switch (level) {
     case 1:
       if (playerCounter > playerRecordEasy) {
         playerRecordEasy = playerCounter;
-        playerRecordEasyPercentage = winningPercentage;
+        playerRecordEasyPercentage = Math.floor(winningPercentage);
       }
       break;
     case 2:
       if (playerCounter > playerRecordNormal) {
         playerRecordNormal = playerCounter;
-        playerRecordNormalPercentage = winningPercentage;
+        playerRecordNormalPercentage = Math.floor(winningPercentage);
       }
       break;
     case 3:
       if (playerCounter > playerRecordHard) {
         playerRecordHard = playerCounter;
-        playerRecordHardPercentage = winningPercentage;
+        playerRecordHardPercentage = Math.floor(winningPercentage);
       }
       break;
   }
+  updateScoreDisplayer();
 }
 
 function gameCampoMinato(target) {
@@ -64,6 +74,7 @@ function gameCampoMinato(target) {
     winningPercentage = playerCounter * winningRatio;
     console.log(winningPercentage);
     target.target.classList.add("mt__safe");
+    updateScoreDisplayer();
   }
 }
 
