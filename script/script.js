@@ -88,7 +88,6 @@ function startGame(cardsNumber) {
     let gameCard = document.createElement("div");
     gameCard.classList.add("mt__game-card");
     gameCard.classList.add(`mt__game-card--${cardsNumber}`);
-    gameCard.innerHTML = `<p class="mt__game-card__text d-inline-block">${index}</p>`;
     gameCard.id = index;
     gameBoard.appendChild(gameCard);
 

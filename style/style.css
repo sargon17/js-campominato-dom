@@ -56,6 +56,7 @@
 
 body {
   background: var(--mt-black);
+  overflow: hidden;
 }
 
 /* ------------------ SECTIONS ----------------- */
@@ -63,13 +64,14 @@ body {
 .mt__main-title {
   font-family: var(--mt-ff-montserrat);
   font-size: var(--mt-fs-xlarge);
+  transition: var(--mt-transition);
 }
 /* / TITLE */
 
 /* GAME BOX */
 .mt__game-box {
-  max-width: 825px;
-  height: 85vh;
+  max-width: 805px;
+  max-height: 80vh;
   aspect-ratio: 1;
   background: var(--mt-dark-gray);
   border-radius: 10px;
@@ -78,6 +80,7 @@ body {
   flex-wrap: wrap;
   align-content: flex-start;
 }
+
 /* / GAME BOX */
 
 /* GAME CARD */
@@ -158,21 +161,12 @@ body {
   top: 50%;
   transform: translate(0%, -50%);
   padding: 5px;
+  transition: var(--mt-transition);
 }
 .sidebar__title {
   font-family: var(--mt-ff-lora);
   font-size: var(--mt-fs-medium);
   margin: 20px 0;
-}
-@media screen and (max-width: 1270px) {
-  .sidebar {
-    width: 18vw;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .sidebar {
-    display: none;
-  }
 }
 /* / Right */
 
@@ -182,6 +176,7 @@ body {
   left: 0px;
   top: 50%;
   transform: translate(0%, -50%);
+  transition: var(--mt-transition);
 }
 .sidebar__percentage {
   font-family: var(--mt-ff-montserrat);
@@ -237,3 +232,20 @@ body {
 }
 /* / GAME OVER SECTION */
 /* ------------------ / SECTIONS ----------------- */
+
+@media screen and (max-width: 1270px) {
+  .sidebar {
+    width: 18vw;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .sidebar {
+    right: -1000px;
+  }
+  .left-sidebar {
+    left: -1000px;
+  }
+  .mt__main-title {
+    font-size: var(--mt-fs-large);
+  }
+}
