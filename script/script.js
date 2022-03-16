@@ -77,7 +77,9 @@ function startGame(cardsNumber) {
     bombs.push(bomb);
   }
   console.log("for cheaters", bombs);
-  winningRatio = cardsNumber / (cardsNumber - 10);
+  console.log(cardsNumber);
+  winningRatio = 100 / (cardsNumber - 10);
+  console.log(winningRatio);
 
   // Create game cards
   for (let index = 1; index <= cardsNumber; index++) {
@@ -114,7 +116,6 @@ function gameCampoMinato(target) {
     playerCounter++;
     scoreChecker();
     winningPercentage = playerCounter * winningRatio;
-    console.log(winningPercentage);
     // update the game board
     target.target.classList.add("mt__safe");
     updateScoreDisplayer();
@@ -126,7 +127,7 @@ function gameCampoMinato(target) {
 
 // --------------- Function that check if the player has won & display the win Section
 function winChecker() {
-  if (winningPercentage > 50) {
+  if (winningPercentage > 99) {
     gameOverText.className = "gameOverText--win";
     gameOverText.innerHTML = "Hai Vinto";
     gameOverRetryBtn.classList.add("d-none");
