@@ -233,10 +233,20 @@ function nearBomb(nearCards) {
     }
   }
   console.log(nearBombs);
+  nearBombNumberDisplay(nearBombs);
 }
 
 function addId(n) {
   return n + id;
+}
+
+function nearBombNumberDisplay(nearBombs) {
+  let clickedCard = document.getElementById(`${id}`);
+  let bombDisplayer = document.createElement("h5");
+  bombDisplayer.innerHTML = `${nearBombs}`;
+  bombDisplayer.className = `bomb-number bomb-number--${nearBombs}`;
+
+  clickedCard.appendChild(bombDisplayer);
 }
 // -------------------------------- / FUNCTIONS ------------------------------------
 
