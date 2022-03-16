@@ -94,7 +94,7 @@ function startGame(cardsNumber) {
 
     // Append on card games the event listener
     gameCard.addEventListener("click", (target) => {
-      if (target.target.id) {
+      if (target.target.id && !target.target.classList.contains("mt__safe")) {
         gameCampoMinato(target);
       }
     });
