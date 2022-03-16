@@ -6,6 +6,7 @@
   --mt-green: #c3dbc5;
   --mt-dark-green: #8ab98e;
   --mt-red: #e35d6a;
+  --mt-dark-red: #dc3646;
   --mt-clear-gray: #afafaf;
   --mt-gray: #5b5b5b;
   --mt-dark-gray: #2d2d2d;
@@ -103,9 +104,10 @@ body {
 }
 .mt__bomb {
   background: var(--mt-red);
+  border: 1px solid var(--mt-dark-red);
 }
 .mt__bomb:hover {
-  background: #bf4f5a;
+  background: var(--mt-dark-red);
 }
 .mt__safe {
   background: var(--mt-blue);
