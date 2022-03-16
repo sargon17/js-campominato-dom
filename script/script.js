@@ -33,6 +33,9 @@ let playerRecordEasy = 0;
 let playerRecordEasyPercentage = 0;
 let winningRatio = 0;
 let winningPercentage = 0;
+let nearBombs = 0;
+let id;
+let nearCards = [];
 // -------------------------------- / GENERAL VARIABLES DECLARATION ------------------------------------
 
 // -------------------------------- FUNCTIONS ------------------------------------
@@ -96,7 +99,7 @@ function startGame(cardsNumber) {
 
 // --------------- Function that contain the game logic
 function gameCampoMinato(target) {
-  let id = parseInt(target.target.id);
+  id = parseInt(target.target.id);
   // check if the clicked card is a bomb
   if (bombs.includes(id)) {
     // Display that You lose & update the records scores
@@ -116,6 +119,7 @@ function gameCampoMinato(target) {
     target.target.classList.add("mt__safe");
     updateScoreDisplayer();
     // check if the player has won
+    nearBombChecker(id);
     winChecker();
   }
 }
@@ -185,6 +189,54 @@ function scoreChecker() {
       }
       break;
   }
+}
+
+function nearBombChecker(id) {
+  switch (level) {
+    case 1:
+      if (id % 10 === 0) {
+        nearCards = [9, 10, -1, -10, -11];
+      } else if (id % 10 === 1) {
+        nearCards = [1, 10, 11, -9, -10];
+      } else {
+        nearCards = [1, 9, 10, 11, -1, -9, -10, -11];
+      }
+      break;
+    case 2:
+      if (id % 9 === 0) {
+        nearCards = [9, 8, -1, -9, -10];
+      } else if (id % 9 === 1) {
+        nearCards = [1, 9, 10, -9, -8];
+      } else {
+        nearCards = [1, 8, 9, 10, -1, -8, -9, -10];
+      }
+      break;
+    case 3:
+      if (id % 7 === 0) {
+        nearCards = [7, 6, -1, -7, -8];
+      } else if (id % 7 === 1) {
+        nearCards = [1, 7, 8, -7, -6];
+      } else {
+        nearCards = [1, 6, 7, 8, -1, -6, -7, -8];
+      }
+      break;
+  }
+  nearBomb(nearCards);
+}
+
+function nearBomb(nearCards) {
+  nearBombs = 0;
+  nearCards = nearCards.map(addId);
+  for (let i = 0; i < nearCards.length; i++) {
+    if (bombs.includes(nearCards[i])) {
+      nearBombs++;
+    }
+  }
+  console.log(nearBombs);
+}
+
+function addId(n) {
+  return n + id;
 }
 // -------------------------------- / FUNCTIONS ------------------------------------
 
