@@ -120,7 +120,11 @@ body {
   background: var(--mt-blue);
 }
 .mt__game-card__text {
-  color: var(--mt-black);
+  color: var(--mt-dark-green);
+  font-size: 9px;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
 }
 .bomb-number {
   position: absolute;
@@ -212,10 +216,8 @@ body {
 }
 
 .game-over-card {
-  background: var(--mt-black);
   width: 30vw;
   height: 20vh;
-  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,5 +249,18 @@ body {
   }
   .mt__main-title {
     font-size: var(--mt-fs-large);
+  }
+  .mt__game-box {
+    overflow: hidden;
+  }
+}
+@media screen and (max-width: 480px) {
+  .mt__main-title {
+    font-size: var(--mt-fs-medium);
+  }
+}
+@media screen and (max-width: 380px) {
+  .mt__game-card__text {
+    display: none;
   }
 }
