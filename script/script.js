@@ -3,7 +3,6 @@ const gameBoard = document.querySelector("#mt__game-box");
 const gameOverWindow = document.querySelector("#gameOverWindow");
 const gameOverText = document.querySelector("#gameOverText");
 const gameOverRetryBtn = document.querySelector("#gameOverRetryBtn");
-const keepPlayingBtn = document.querySelector("#keepPlayingBtn");
 const choseLevel = document.querySelector("#choseLevel");
 const choseLevelBtn = document.querySelector("#choseLevelBtn");
 const playerScorePercentageDisplay = document.querySelector(
@@ -72,13 +71,16 @@ function startGame(cardsNumber) {
   // Reset bombs array
   bombs = [];
   //Create bombs array
-  for (let index = 0; index < 10; index++) {
+  while (bombs.length < 16) {
     bomb = Math.floor(Math.random() * cardsNumber + 1);
-    bombs.push(bomb);
+    if (!bombs.includes(bomb)) {
+      bombs.push(bomb);
+    }
   }
+
   console.log("for cheaters", bombs);
   console.log(cardsNumber);
-  winningRatio = 100 / (cardsNumber - 10);
+  winningRatio = 100 / (cardsNumber - bombs.length);
   console.log(winningRatio);
 
   // Create game cards
@@ -111,6 +113,7 @@ function gameCampoMinato(target) {
     gameOverText.classList.remove("gameOverText--win");
     gameOverWindow.classList.remove("d-none");
     playerScorePercentageDisplay.classList.remove("sidebar__percentage-over");
+    allBombsDisplayer();
   } else {
     //Updates the score counter & Display counter
     playerCounter++;
@@ -121,18 +124,18 @@ function gameCampoMinato(target) {
     updateScoreDisplayer();
     // check if the player has won
     nearBombChecker(id);
-    winChecker();
+    winChecker(level);
   }
 }
 
 // --------------- Function that check if the player has won & display the win Section
-function winChecker() {
+function winChecker(level) {
   if (winningPercentage > 99) {
     gameOverText.className = "gameOverText--win";
     gameOverText.innerHTML = "Hai Vinto";
-    gameOverRetryBtn.classList.add("d-none");
-    keepPlayingBtn.classList.remove("d-none");
     gameOverWindow.classList.remove("d-none");
+    allBombsDisplayer();
+    scoresRecord(level);
   }
 }
 
@@ -189,6 +192,13 @@ function scoreChecker() {
         playerScorePercentageDisplay.classList.add("sidebar__percentage-over");
       }
       break;
+  }
+}
+
+function allBombsDisplayer() {
+  for (let index = 0; index < bombs.length; index++) {
+    let bombCard = document.getElementById(`${bombs[index]}`);
+    bombCard.classList.add("mt__bomb");
   }
 }
 
@@ -260,9 +270,5 @@ gameOverRetryBtn.addEventListener("click", () => {
   levelChoice();
   gameOverWindow.classList.add("d-none");
 });
-keepPlayingBtn.addEventListener("click", () => {
-  gameOverWindow.classList.add("d-none");
-});
-
 choseLevelBtn.addEventListener("click", levelChoice);
 // -------------------------------- / EVENT LISTENERS ------------------------------------
