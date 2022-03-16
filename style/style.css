@@ -190,8 +190,9 @@ body {
 }
 .sidebar__percentage span {
   font-family: var(--mt-ff-lora);
-  font-size: var(--mt-fs-small);
+  /* font-size: var(--mt-fs-small); */
   color: var(--mt-gray);
+  font-size: 0.4em;
 }
 .sidebar__percentage-over {
   color: var(--mt-dark-green);
@@ -263,4 +264,19 @@ body {
   }
 }
 @media screen and (max-width: 380px) {
+  .left-sidebar {
+    /* font-size: px;
+    left: 0px;
+    bottom: 10px; */
+    top: unset;
+    transform: unset;
+    position: initial;
+  }
+  .sidebar__title {
+    font-size: var(--mt-fs-medium);
+    margin: 5px;
+  }
+  .sidebar__percentage {
+    font-size: var(--mt-fs-small);
+  }
 }
