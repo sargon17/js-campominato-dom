@@ -258,9 +258,9 @@ body {
   .mt__main-title {
     font-size: var(--mt-fs-medium);
   }
-}
-@media screen and (max-width: 380px) {
   .mt__game-card__text {
     display: none;
   }
+}
+@media screen and (max-width: 380px) {
 }
