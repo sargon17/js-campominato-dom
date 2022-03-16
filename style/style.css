@@ -262,12 +262,7 @@ body {
   .mt__game-card__text {
     display: none;
   }
-}
-@media screen and (max-width: 380px) {
   .left-sidebar {
-    /* font-size: px;
-    left: 0px;
-    bottom: 10px; */
     top: unset;
     transform: unset;
     position: initial;
@@ -279,4 +274,6 @@ body {
   .sidebar__percentage {
     font-size: var(--mt-fs-small);
   }
+}
+@media screen and (max-width: 380px) {
 }
