@@ -210,6 +210,7 @@ function allBombsDisplayer() {
   for (let index = 0; index < bombs.length; index++) {
     let bombCard = document.getElementById(`${bombs[index]}`);
     bombCard.classList.add("mt__bomb");
+    bombCard.classList.remove("mt__metka");
   }
 }
 
