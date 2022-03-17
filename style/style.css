@@ -122,6 +122,15 @@ body {
 .mt__safe:hover {
   background: var(--mt-blue);
 }
+.mt__metka {
+  background: var(--mt-green) url(../img/Metka.png) center no-repeat;
+  background-size: 50%;
+  transition: none;
+}
+.mt__metka:hover {
+  background: var(--mt-dark-green) url(../img/Metka.png) center no-repeat;
+  background-size: 50%;
+}
 .mt__game-card__text {
   color: var(--mt-dark-green);
   font-size: 9px;

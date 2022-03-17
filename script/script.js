@@ -95,8 +95,18 @@ function startGame(cardsNumber) {
 
     // Append on card games the event listener
     gameCard.addEventListener("click", (target) => {
-      if (target.target.id && !target.target.classList.contains("mt__safe")) {
+      if (
+        target.target.id &&
+        !target.target.classList.contains("mt__safe") &&
+        !target.ctrlKey
+      ) {
         gameCampoMinato(target);
+        gameCard.classList.remove("mt__metka");
+      } else if (
+        target.ctrlKey &&
+        !target.target.classList.contains("mt__safe")
+      ) {
+        gameCard.classList.toggle("mt__metka");
       }
     });
   }
