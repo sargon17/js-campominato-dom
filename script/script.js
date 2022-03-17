@@ -18,6 +18,7 @@ const playerEasyRecordPercentageDisplay = document.querySelector(
   "#playerEasyRecordPercentageDisplay"
 );
 const levelDisplay = document.querySelector("#levelDisplay");
+
 // -------------------------------- / DOM ELEMENTS ------------------------------------
 
 // -------------------------------- GENERAL VARIABLES DECLARATION ------------------------------------
